@@ -5,11 +5,11 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "127.0.0.1", 
     "localhost",
-    ""  # Reemplaza con tu dominio real
+    "*"
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    '',  # Reemplaza con tu dominio real
+    "",
 ]
 
 SECURE_BROWSER_XSS_FILTER = True
