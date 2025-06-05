@@ -18,7 +18,7 @@ services:
       DJANGO_ENV: produccion
       SECRET_KEY: ${KEY_SECRET}
       API: ${VITE_API_URL}
-      
+    
   frontend:
     build:
       context: .
@@ -28,6 +28,8 @@ services:
       - "80:80"
     networks:
       - network
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
   
 networks:
   network:

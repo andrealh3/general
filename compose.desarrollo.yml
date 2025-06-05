@@ -38,6 +38,8 @@ services:
       - network
     volumes:
       - ./frontend/:/usr/src/app/frontend/
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
 
   db:
     container_name: ${APP_NAME}_db
