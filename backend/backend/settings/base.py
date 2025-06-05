@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "orderhub-backend-xwva.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "*"]
 
 # Application definition
 SECRET_KEY = config('SECRET_KEY')

@@ -1,30 +1,101 @@
-database/
+############################################
+# === GLOBAL (raíz) ===
+############################################
 
-# Python
-env/
-venv/
-.venv/
-__pycache__/
-*.pyc
-*.pyo
-*.log
-.env
-.vscode/
-.idea/
-
-# React
-node_modules/
-build/
-dist/
-*.log
-.env
-.vscode/
-.idea/
-.eslintcache
-
-# OS specific
+# Archivos de sistema operativo
 .DS_Store
 Thumbs.db
-.coverage
-coverage/
-*.coverage
+ehthumbs.db
+Desktop.ini
+*~
+
+# Archivos temporales / backups
+*.bak
+*.swp
+*.swo
+*.tmp
+*.orig
+
+# Variables de entorno globales (no subir secretos)
+.env
+.env.*
+
+# IDEs / editores
+.vscode/
+.idea/
+
+# Docker: datos locales / volúmenes / sockets (no subir)
+docker-data/
+volumes/
+*.pid
+*.sock
+
+############################################
+# === BACKEND (Python / Django) ===
+############################################
+
+# Entornos virtuales Python
+backend/env/
+backend/venv/
+backend/.venv/
+
+# Archivos compilados de Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+
+# Logs
+backend/*.log
+
+# Traducciones
+backend/*.pot
+backend/*.mo
+
+# Configuración sensible y local
+backend/.env
+backend/.env.*
+backend/local_settings.py
+
+# Bases de datos locales (SQLite u otros)
+backend/*.sqlite3
+backend/*.db
+backend/database/
+
+# Cobertura de tests y caché
+backend/.coverage
+backend/coverage/
+backend/*.coverage
+backend/htmlcov/
+backend/.pytest_cache/
+backend/.tox/
+backend/nosetests.xml
+backend/test-results/
+backend/junit.xml
+
+# Archivos generados por Django
+backend/staticfiles/
+backend/media/
+
+############################################
+# === FRONTEND (React / Node.js) ===
+############################################
+
+# Dependencias
+frontend/node_modules/
+
+# Build y cachés
+frontend/build/
+frontend/dist/
+frontend/out/
+frontend/.next/
+frontend/.nuxt/
+frontend/.temp/
+frontend/.temp_cache/
+
+# Variables de entorno y configuración local
+frontend/.env
+frontend/.env.*
+frontend/.eslintcache
+
+# Logs y temporales
+frontend/*.log
