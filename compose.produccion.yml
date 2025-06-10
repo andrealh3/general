@@ -10,14 +10,14 @@ services:
       - network
     restart: always
     environment:
-      POSTGRES_DB: ${DATABASE_NOMBRE}
-      POSTGRES_USER: ${DATABASE_USUARIO}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD_USUARIO}
-      DB_HOST: ${DB_HOST_EXTERNAL}
-      DB_PORT: ${DB_PORT_EXTERNAL}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
       DJANGO_ENV: produccion
-      SECRET_KEY: ${KEY_SECRET}
-      API: ${VITE_API_URL}
+      SECRET_KEY: ${SECRET_KEY}
+      API: ${API}
     
   frontend:
     build:

@@ -9,3 +9,8 @@ psycopg2-binary==2.9.9  # Si usas PostgreSQL
 python-decouple==3.8  # Para gestionar variables de entorno
 drf-yasg==1.21.7
 whitenoise==6.7.0
+pytest==8.2.1  # Para pruebas
+pytest-django==4.5.2  # Integración de pytest con Django
+pytest-cov==4.1.0  # Para cobertura de pruebas
+drf-spectacular==0.28.0  # Alternativa a drf-yasg para documentación de la API
+pycodestyle==2.13.0

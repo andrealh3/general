@@ -1,0 +1,84 @@
+name: Development Workflow – Test & Build Django + React with PostgreSQL
+
+on:
+  pull_request:
+    branches: [develop]
+  push:
+    branches: [develop]
+
+jobs:
+  health-checkup-job:
+    runs-on: ubuntu-latest
+
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      POSTGRES_DB: test_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run backend migrations
+        run: |
+          cd backend
+          python manage.py makemigrations --noinput
+          python manage.py migrate --noinput
+
+      # - name: Run backend tests
+      #   run: |
+      #     cd backend
+      #     pytest
+
+      - name: Check Python syntax (pycodestyle)
+        run: |
+          cd backend
+          pycodestyle --ignore=E501 --statistics . 
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          yarn install
+
+      # - name: Run frontend tests
+      #   run: |
+      #     cd frontend
+      #     yarn test --watchAll=false
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          yarn build

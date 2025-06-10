@@ -15,14 +15,14 @@ services:
       - network
     restart: always
     environment:
-      POSTGRES_DB: ${DATABASE_NOMBRE}
-      POSTGRES_USER: ${DATABASE_USUARIO}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD_USUARIO}
-      DB_HOST: db
-      DB_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
       DJANGO_ENV: desarrollo
-      SECRET_KEY: ${KEY_SECRET}
-      API: ${VITE_API_URL}
+      SECRET_KEY: ${SECRET_KEY}
+      API: ${API}
     
   frontend:
     depends_on:
@@ -48,9 +48,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: ${DATABASE_USUARIO}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD_USUARIO}
-      POSTGRES_DB: ${DATABASE_NOMBRE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "$DATABASE_USUARIO", "-d", "$DATABASE_NOMBRE"]
       interval: 10s
